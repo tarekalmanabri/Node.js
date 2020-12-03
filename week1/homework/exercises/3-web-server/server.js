@@ -5,6 +5,7 @@
 var http = require("http");
 const path = require("path");
 const fs = require("fs");
+const { send } = require("process");
 //create a server
 let server = http.createServer(function (req, res) {
   // YOUR CODE GOES IN HERE
@@ -14,6 +15,8 @@ let server = http.createServer(function (req, res) {
     serveFile(req.url, "application/javascript", res);
   } else if (req.url === "/style.css") {
     serveFile(req.url, "text/css", res);
+  } else {
+    send.status(404);
   }
 });
 
